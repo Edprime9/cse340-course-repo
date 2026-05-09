@@ -1,31 +1,156 @@
-html,
-body {
-  background-color: lightblue;
-  font-family: Arial, sans-serif;
+/* =========================
+   Global Styles
+========================= */
+
+* {
   margin: 0;
-  padding: 20px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
 }
 
 body {
-  nav {
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f7fb;
+  color: #222;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-    li {
-      display: inline;
-      margin-right: 15px;
-    }
+/* =========================
+   Navigation
+========================= */
 
-    a {
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
+nav {
+  background-color: #003366;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
 
-      &:hover {
-        color: #0066cc;
-      }
-    }
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+nav a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover,
+nav a:focus {
+  color: #ffcc00;
+}
+
+/* =========================
+   Main Content
+========================= */
+
+main {
+  flex: 1;
+  max-width: 1000px;
+  width: 90%;
+  margin: 2rem auto;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+main h1 {
+  font-size: 2.5rem;
+  color: #003366;
+  margin-bottom: 1rem;
+}
+
+main h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #00509e;
+}
+
+main p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #444;
+}
+.main-list {
+  list-style: none;
+  margin-top: 1.5rem;
+  padding: 0;
+}
+
+.main-list li {
+  background-color: #f0f4f8;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-left: 5px solid #003366;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* =========================
+   Logo Image
+========================= */
+
+.main-logo {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-top: 1rem;
+}
+
+/* =========================
+   Footer
+========================= */
+
+footer {
+  background-color: #003366;
+  color: #ffffff;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+}
+
+/* =========================
+   Responsive Design
+========================= */
+
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  main {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  main h1 {
+    font-size: 2rem;
+  }
+
+  main h2 {
+    font-size: 1.3rem;
+  }
+
+  main p {
+    font-size: 1rem;
+  }
+  .main-list li {
   }
 }
