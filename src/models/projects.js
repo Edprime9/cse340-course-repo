@@ -1,7 +1,7 @@
 import db from "./db.js";
 
 async function getAllProjects() {
-  const sql = `
+  const query = `
         SELECT 
             service_projects.project_id,
             service_projects.title,
@@ -15,10 +15,8 @@ async function getAllProjects() {
         ORDER BY service_projects.project_date;
     `;
 
-  const result = await pool.query(sql);
+  const result = await db.query(query);
   return result.rows;
 }
 
-module.exports = {
-  getAllProjects,
-};
+export { getAllProjects };
