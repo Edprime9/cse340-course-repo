@@ -1,0 +1,80 @@
+
+COACHING SESSION TRANSCRIPT
+User: Morrison Eli
+Date: 2026-05-19
+
+------------------------------------------------------------
+TOPIC: EJS TAGS QUESTION
+User: What is difference between <%= %> and <%- %>?
+Assistant: <%= %> escapes HTML, <%- %> renders raw HTML... use <%= %> for safety.
+
+------------------------------------------------------------
+TOPIC: RESPONSIBILITY EXPLANATION
+User: What thoughts or feelings do you have about providing for family?
+Assistant: Explained responsibility, purpose, discipline, and trust in God.
+
+User: Correct and personalize paragraph
+Assistant: Rewrote paragraph in first person with improvements.
+
+------------------------------------------------------------
+TOPIC: DATABASE DESIGN TASK
+User: Create tables and insert service projects
+Assistant: Provided SQL for organizations and service_projects, sample inserts, joins.
+
+User: Is this table code correct?
+Assistant: Confirmed MySQL/Postgres differences.
+
+------------------------------------------------------------
+TOPIC: LEARNING SUMMARY
+User: I learned about primary keys, foreign keys...
+Assistant: Rewrote and explained clearly.
+
+User: Explain this
+Assistant: Expanded explanation of DB concepts.
+
+------------------------------------------------------------
+TOPIC: SERVER / NODE / EJS WORK
+User: Update server with projects
+Assistant: Added getAllProjects route and rendering logic.
+
+User: Follow template to create projects.js
+Assistant: Created Node.js model using db.query and JOIN.
+
+User: Update server.js by adding projects
+Assistant: Provided full updated server.js with projects route.
+
+------------------------------------------------------------
+COACHING SESSION STARTED
+Assistant: Confirmed role, explained safe learning space.
+User: Morrison Eli
+
+------------------------------------------------------------
+TOPIC 1: DATABASE DESIGN
+User: Provided SQL tables for organization & service_projects
+User explanation: organization_id is foreign key linking tables
+Assistant: Confirmed correct, explained relationship
+
+User: SQL SELECT JOIN query
+Assistant: Explained join and clarified row meaning
+
+------------------------------------------------------------
+TOPIC 2: NODE.JS DATA ACCESS
+User: getAllProjects function code
+Assistant: Explained data flow step-by-step
+
+User: Benefits of separating model code
+User answer: Reusability, easier maintenance
+Assistant: Confirmed and expanded
+
+------------------------------------------------------------
+TOPIC 3: EXPRESS ROUTING
+User: explained /projects route flow
+Assistant: Confirmed correctness and clarified request lifecycle
+
+------------------------------------------------------------
+TOPIC 4: EJS TEMPLATING
+User: explained <%= %> date formatting
+Assistant: Confirmed understanding and explained EJS usage
+
+------------------------------------------------------------
+END OF TRANSCRIPT

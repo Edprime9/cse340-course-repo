@@ -1,0 +1,125 @@
+
+Coach: Welcome! Just to be clear from the start, this is a coaching session, not a test. It is perfectly okay—and even encouraged—to say “I don’t know” or “I made a mistake.” That’s the fastest way we’ll learn today.
+
+Coach: I’ll be your supportive Learning Coach and Software Mentor during this session, Morrison Eli. This is a safe learning space where mistakes are encouraged because they help us grow as developers.
+
+Coach: Since we’re working in a chat interface, please paste any relevant code snippets directly into the chat whenever we discuss your code.
+
+Coach: Let’s begin with Topic 1: Express Routing.
+
+Coach: Please paste a relevant snippet from your server.js file that shows how you handled Express routing in your project.
+
+Morrison Eli:
+app.get("/", async (req, res) => {
+  const title = "Home";
+  res.render("home", { title });
+});
+
+Coach: Thanks for sharing that routing snippet, Morrison Eli.
+
+Coach: You’re using an Express GET route to respond to requests for the home page and then rendering an EJS page while passing data into it.
+
+Coach: Can you walk me through what happens step-by-step when a user visits / in the browser and why you chose to use res.render("home", { title }) instead of something like res.send()?
+
+Morrison Eli:
+I don't know
+
+Coach: That’s completely okay, Morrison Eli — saying “I don’t know” is part of learning, and this is exactly the right place to work through it.
+
+Coach:
+app.get("/", async (req, res) => {
+  const title = "Home";
+  res.render("home", { title });
+});
+
+Coach: Step-by-step:
+1. app.get("/") creates a route for the homepage.
+2. req is the request and res is the response.
+3. const title = "Home"; creates a variable.
+4. res.render("home", { title }) renders the EJS page and passes the title variable.
+
+Coach: Why not res.send()?
+- res.send() sends plain text or raw HTML
+- res.render() works better for dynamic EJS templates
+
+Coach: Now for the next step in our discussion: can you paste a JavaScript function snippet from your project that demonstrates a JavaScript language principle you used?
+
+Morrison Eli:
+I don't know
+
+Coach: That’s okay, Morrison Eli. We’ll work through it together.
+
+Coach:
+function greetUser(name) {
+  return `Welcome ${name}`;
+}
+
+Coach: This demonstrates:
+- Functions
+- Parameters
+- Return values
+- Template literals
+
+Coach: Can you paste any small JavaScript snippet from your project, even if you’re not sure what principle it demonstrates?
+
+Morrison Eli:
+const app = express();
+
+Coach: Thanks for sharing that snippet, Morrison Eli.
+
+Coach:
+const app = express();
+
+Coach: This demonstrates variable declaration and object assignment.
+
+Coach: Now let’s move to Topic 3: EJS Partials and Pages.
+
+Coach: Please paste an EJS snippet from your project.
+
+Morrison Eli:
+<%- include('partials/header') %>
+<main>
+  <h1><%= title %></h1>
+</main>
+<%- include('partials/footer') %>
+
+Coach: Great example, Morrison Eli. This snippet shows both an EJS page and the use of EJS partials.
+
+Coach: Can you explain why using partials might be better than copying the same header and footer HTML into every EJS page manually?
+
+Morrison Eli:
+Every time you copy-paste, there’s a chance you'll accidentally delete a closing </div> or miss a <script> tag in one of the files. This leads to "ghost bugs" where the site looks perfect on the Home page but breaks on the Categories page. Partials ensure the structure is identical everywhere.
+
+Coach: Excellent explanation, Morrison Eli.
+
+Coach: Now let’s move to Topic 4: Frontend CSS.
+
+Coach: Please paste a CSS snippet from your project that you used to style your frontend layout or responsiveness.
+
+Morrison Eli:
+main {
+  flex: 1;
+  max-width: 1000px;
+  width: 90%;
+  margin: 2rem auto;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+Coach: Nice CSS snippet, Morrison Eli.
+
+Coach: Can you explain why you chose to use both max-width: 1000px and width: 90% together instead of using only one of them?
+
+Morrison Eli:
+Combining these two properties is good for responsive design. It ensures your layout looks intentional on a tiny iPhone SE and a massive 27-inch desktop monitor.
+
+Coach: That’s a very good explanation, Morrison Eli.
+
+Coach: You’ve now successfully discussed all four required topics:
+1. Express Routing
+2. JavaScript Language Principles
+3. EJS Partials and Pages
+4. Frontend CSS
