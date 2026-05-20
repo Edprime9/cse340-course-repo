@@ -57,3 +57,19 @@ VALUES
 (3, 'Leadership Seminar', 'Leadership development', 'Owerri', '2026-08-10'),
 (3, 'Entrepreneurship Training', 'Teach business skills', 'Abeokuta', '2026-08-15'),
 (3, 'Digital Skills Training', 'Teach digital marketing', 'Calabar', '2026-08-20');
+
+-- Categories Table
+CREATE TABLE categories (
+    category_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT
+);
+
+-- Insert Sample Categories
+INSERT INTO categories (name, description)
+VALUES
+('Education', 'Projects related to schools and learning'),
+('Health', 'Projects focused on healthcare and wellness'),
+('Environment', 'Projects that improve the environment'),
+('Community Service', 'Projects that support local communities'),
+('Technology', 'Projects involving digital and technical skills');
