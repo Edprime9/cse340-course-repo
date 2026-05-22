@@ -73,3 +73,54 @@ VALUES
 ('Environment', 'Projects that improve the environment'),
 ('Community Service', 'Projects that support local communities'),
 ('Technology', 'Projects involving digital and technical skills');
+
+-- 
+CREATE TABLE project_categories (
+    project_id INT NOT NULL,
+    category_id INT NOT NULL,
+
+    PRIMARY KEY (project_id, category_id),
+
+    CONSTRAINT fk_project
+        FOREIGN KEY (project_id)
+        REFERENCES service_projects(project_id),
+
+    CONSTRAINT fk_category
+        FOREIGN KEY (category_id)
+        REFERENCES categories(category_id)
+);
+
+INSERT INTO project_categories (project_id, category_id)
+VALUES
+(1, 4),
+(1, 2),
+
+(2, 1),
+
+(3, 2),
+
+(4, 4),
+
+(5, 4),
+
+(6, 3),
+
+(7, 3),
+(7, 4),
+
+(8, 3),
+
+(9, 4),
+
+(10, 3),
+
+(11, 5),
+(11, 1),
+
+(12, 1),
+
+(13, 4),
+
+(14, 5),
+
+(15, 5);
