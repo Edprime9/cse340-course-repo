@@ -23,18 +23,19 @@ const getAllProjects = async () => {
 const getProjectsByOrganizationId = async (organizationId) => {
   const query = `
         SELECT
-          project_id,
-          organization_id,
-          title,
-          description,
-          location,
-          date
-        FROM project
+            project_id,
+            organization_id,
+            title,
+            description,
+            location,
+            project_date
+        FROM service_projects
         WHERE organization_id = $1
-        ORDER BY date;
-      `;
+        ORDER BY project_date;
+    `;
 
   const queryParams = [organizationId];
+
   const result = await db.query(query, queryParams);
 
   return result.rows;
