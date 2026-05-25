@@ -22,13 +22,13 @@ const showProjectsPage = async (req, res) => {
 const showProjectDetailsPage = async (req, res) => {
   const projectId = req.params.id;
 
-  const projectDetails = await getProjectDetails(projectId);
+  const project = await getProjectDetails(projectId);
 
-  const title = "projectDetails.title";
+  const title = "Project Details";
 
   res.render("project", {
     title,
-    ProjectDetails,
+    project,
   });
 };
 
