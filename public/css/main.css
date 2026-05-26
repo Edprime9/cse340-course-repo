@@ -27,22 +27,33 @@ body {
 ========================= */
 
 nav {
-  background-color: #003366;
+  background-color: #fff;
   padding: 1rem 2rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: sticky;
+  top: 0;
+}
+
+.nav-logo {
+  height: 50px;
+  width: auto;
 }
 
 nav ul {
   list-style: none;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 1.5rem;
   flex-wrap: wrap;
 }
 
 nav a {
   text-decoration: none;
-  color: #ffffff;
+  color: #000;
   font-weight: bold;
   transition: color 0.3s ease;
 }
