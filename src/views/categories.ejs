@@ -4,15 +4,12 @@
       <p>Here are a few of our Service Project by Categories:</p>
       <ul class="main-list">
         <% categories.forEach(category => { %>
-
-            <li>
-              <a href="/category/<%= category.category_id %>">
-                <strong><%= category.name %></strong>
-              </a>
-                -
-                <%= category.description %>
-            </li>
-            <% }); %>
+          <li>
+            <a href="/category/<%= category.category_id %>">
+              <%= category.name %>
+            </a>
+          </li>
+        <% }) %>
       </ul>
     </main>
     <%- include('partials/footer') %>
