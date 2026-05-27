@@ -1,0 +1,130 @@
+Coach: Welcome! Just to be clear from the start, this is a coaching session, not a test. It is perfectly okay—and even encouraged—to say 'I don't know' or 'I made a mistake.' That's the fastest way we'll learn today.
+
+Coach: Please paste one controller function that uses a route parameter like req.params.id.
+
+User:
+const showProjectDetailsPage = async (req, res) => {
+  const projectId = req.params.id;
+
+  const project = await getProjectDetails(projectId);
+
+  // GET THE CATEGORIES
+  const categories = await getCategoriesByProjectId(projectId);
+
+  const title = project.title;
+
+  console.log(categories);
+
+  // SEND categories TO EJS
+  res.render("project", {
+    title,
+    project,
+    categories,
+  });
+};
+
+Coach:
+This is a solid controller function because it clearly separates responsibilities between the controller and model layers.
+
+A few important things happening here:
+
+const projectId = req.params.id;
+
+This extracts the route parameter from a URL like:
+/project/3
+
+Then the controller calls model functions to retrieve data:
+
+const project = await getProjectDetails(projectId);
+const categories = await getCategoriesByProjectId(projectId);
+
+That keeps database logic out of the controller, which follows the MVC pattern correctly.
+
+Finally, the controller passes the data to the EJS view:
+
+res.render("project", {
+  title,
+  project,
+  categories,
+});
+
+This is also what fixed your earlier `categories is not defined` error, because now the `categories` array is actually being sent to `project.ejs`.
+
+Coach: Why do you think it is better to keep the SQL queries inside model functions instead of writing SQL directly inside this controller?
+
+User:
+It separate codes and helps in debugging and also when making a change to your code it won't affect other part of the code
+
+Coach:
+Exactly. Keeping SQL inside the model layer improves separation of concerns.
+
+The controller focuses on:
+- handling the request
+- calling the needed functions
+- sending data to the view
+
+While the model focuses on:
+- database queries
+- retrieving and organizing data
+
+That makes the application:
+- easier to debug
+- easier to maintain
+- more reusable
+- safer to update without breaking unrelated code
+
+Coach: Please paste one code snippet from your application that handles a 404 or 500 error.
+
+User:
+app.use((req, res, next) => {
+  const err = new Error("Page Not Found");
+  err.status = 404;
+  next(err);
+});
+
+Coach:
+Good. This middleware is acting as a catch-all route for requests that do not match any existing route in your application.
+
+Here’s what it does step by step:
+
+const err = new Error("Page Not Found");
+
+Creates a new error object.
+
+err.status = 404;
+
+Assigns the HTTP status code for “Not Found”.
+
+next(err);
+
+Passes the error to the global error-handling middleware, which then renders your custom `404.ejs` page.
+
+This is a good MVC-related design because the application has centralized error handling instead of repeating error code in every route.
+
+Coach: What would happen if you forgot to call next(err) in this middleware?
+
+User:
+I don't know
+
+Coach:
+That’s okay. If you forget to call:
+
+next(err);
+
+then the error will never be passed to the global error handler.
+
+As a result:
+- the request may hang without a response
+- the browser could keep loading indefinitely
+- your custom `404.ejs` page would not render
+
+In Express, next(err) is what tells Express:
+“An error occurred — send this to the error-handling middleware.”
+
+You’ve now discussed:
+- Models
+- Views
+- Controllers
+- Error handling
+
+So you successfully covered all four required topics for the coaching session.

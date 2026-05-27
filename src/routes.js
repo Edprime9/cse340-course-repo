@@ -4,6 +4,8 @@ import { showHomePage } from "./controllers/index.js";
 import {
   showOrganizationsPage,
   showOrganizationDetailsPage,
+  showNewOrganizationForm,
+  processNewOrganizationForm,
 } from "./controllers/organizations.js";
 
 import {
@@ -27,6 +29,8 @@ router.get("/project/:id", showProjectDetailsPage);
 router.get("/categories", showCategoriesPage);
 router.get("/category/:id", showCategoryDetailsPage);
 router.get("/organization/:id", showOrganizationDetailsPage); // Route for organization details page
+router.get("/new-organization", showNewOrganizationForm); // Route for new organization page
+router.post("/new-organization", processNewOrganizationForm); // Route to handle new organization form submission
 
 // error-handling routes
 router.get("/test-error", testErrorPage);
