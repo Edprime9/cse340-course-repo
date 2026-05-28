@@ -14,6 +14,9 @@ import {
 import {
   showProjectsPage,
   showProjectDetailsPage,
+  showNewProjectForm,
+  processNewProjectForm,
+  projectValidation,
 } from "./controllers/projects.js";
 
 import {
@@ -44,8 +47,8 @@ router.post(
   organizationValidation,
   processEditOrganizationForm,
 ); // Route to handle the edit organization form submission
-
-// error-handling routes
-router.get("/test-error", testErrorPage);
+router.get("/new-project", showNewProjectForm); // Route for new project page
+router.post("/new-project", projectValidation, processNewProjectForm); // Route to handle new project form submission
+router.get("/test-error", testErrorPage); // error-handling routes
 
 export default router;
