@@ -4,6 +4,9 @@
 const showHomePage = async (req, res) => {
   const title = "Home";
 
+  // Set a success flash message
+  req.flash("success", "Hello Home Page!");
+
   res.render("home", { title });
 };
 
