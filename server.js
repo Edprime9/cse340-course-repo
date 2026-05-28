@@ -6,6 +6,8 @@ import router from "./src/routes.js";
 import session from "express-session";
 import flash from "./src/middleware/flash.js";
 
+const SESSION_SECRET = process.env.SESSION_SECRET;
+
 // Define the the application environment
 const NODE_ENV = process.env.NODE_ENV?.toLowerCase() || "production";
 
@@ -16,8 +18,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-
-const SESSION_SECRET = process.env.SESSION_SECRET;
 
 // Set up session management
 app.use(
