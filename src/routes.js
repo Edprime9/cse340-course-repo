@@ -17,6 +17,8 @@ import {
   showNewProjectForm,
   processNewProjectForm,
   projectValidation,
+  showEditProjectForm,
+  processEditProjectForm,
 } from "./controllers/projects.js";
 
 import {
@@ -56,5 +58,7 @@ router.get("/test-error", testErrorPage); // error-handling routes
 // Routes to handle the assign categories to project form
 router.get("/assign-categories/:projectId", showAssignCategoriesForm);
 router.post("/assign-categories/:projectId", processAssignCategoriesForm);
+router.get("/edit-project/:id", showEditProjectForm); // Edit project form
+router.post("/edit-project/:id", processEditProjectForm); // Process edit project form
 
 export default router;
