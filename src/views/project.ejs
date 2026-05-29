@@ -28,6 +28,11 @@
       <%= project.organization_name %>
     </a>
   </p>
+  Add a link on the project page to navigate to the assign categories form. For
+  example:
+  <p>
+    <a href="/assign-categories/<%= project.project_id %>">Edit Categories</a>
+  </p>
 </main>
 
 <%- include('partials/footer') %>
