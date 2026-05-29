@@ -4,7 +4,7 @@ import db from "./db.js";
 const getAllCategories = async () => {
   const query = `
     SELECT category_id, name, description
-    FROM categories
+    FROM categoriess
     ORDER BY name;
   `;
 
@@ -70,16 +70,20 @@ const assignCategoryToProject = async (categoryId, projectId) => {
 };
 
 const updateCategoryAssignments = async (projectId, categoryIds) => {
-  // First, remove existing category assignments for the project
-  const deleteQuery = `
-        DELETE FROM project_category
-        WHERE project_id = $1;
-    `;
-  await db.query(deleteQuery, [projectId]);
+  // Remove existing category assignments
+  await db.query(
+    `DELETE FROM project_categories
+     WHERE project_id = $1`,
+    [projectId],
+  );
 
-  // Next, add the new category assignments
+  // Add new category assignments
   for (const categoryId of categoryIds) {
-    await assignCategoryToProject(categoryId, projectId);
+    await db.query(
+      `INSERT INTO project_categories (project_id, category_id)
+       VALUES ($1, $2)`,
+      [projectId, categoryId],
+    );
   }
 };
 
