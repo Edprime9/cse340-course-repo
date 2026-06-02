@@ -1,0 +1,78 @@
+WEEK 04 COACHING SESSION TRANSCRIPT
+
+Coach: Welcome! Just to be clear from the start, this is a coaching session, not a test. It is perfectly okay—and even encouraged—to say 'I don't know' or 'I made a mistake.' That's the fastest way we'll learn today.
+
+Coach: What name would you like me to use during our coaching session?
+User: Morrison Eli
+
+Topic 1 - Handling Form Submissions
+User code:
+router.post("/new-project", projectValidation, processNewProjectForm);
+
+User code:
+const processNewProjectForm = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    errors.array().forEach((error) => {
+      req.flash("error", error.msg);
+    });
+    return res.redirect("/new-project");
+  }
+
+  const { title, description, location, date, organizationId } = req.body;
+
+  try {
+    const newProjectId = await createProject(
+      title,
+      description,
+      location,
+      date,
+      organizationId,
+    );
+
+    req.flash("success", "New service project created successfully!");
+    res.redirect(`/project/${newProjectId}`);
+  } catch (error) {
+    console.error("Error creating new project:", error);
+    req.flash("error", "There was an error creating the service project.");
+    res.redirect("/new-project");
+  }
+};
+
+Coach: Why destructure values from req.body instead of passing req.body directly?
+User: Explicit whitelist — only expected fields get through. Clarity.
+
+Topic 2 - Update Forms
+User EJS:
+<%- include('partials/header') %>
+<form action="/edit-project/<%= project.project_id %>" method="POST">
+<input value="<%= project.title %>">
+<textarea><%= project.description %></textarea>
+<select>
+<%= organization.organization_id === project.organization_id ? 'selected' : '' %>
+</select>
+</form>
+
+Coach: What happens if you remove EJS data binding?
+User: Page would be blank, user confused.
+
+Topic 3 - Sessions and Flash Messages
+User reused flash code snippet.
+
+Coach explanation:
+Flash messages persist across redirects using sessions.
+
+Coach question: Why use flash before redirect instead of render?
+User: I don't know
+
+Topic 4 - Server-side Validation
+User validation middleware provided.
+
+Coach question: Where should validation be stronger?
+User: Structured fields (not sure why)
+
+Coach explanation:
+Structured fields matter more because they enforce strict system rules.
+
+Coach question: What happens if organizationId = "abc"?
+User: My application will break and behave unpredictably
