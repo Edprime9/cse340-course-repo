@@ -8,6 +8,10 @@ import flash from "./src/middleware/flash.js";
 
 const SESSION_SECRET = process.env.SESSION_SECRET;
 
+if (!SESSION_SECRET) {
+  throw new Error("SESSION_SECRET environment variable is missing");
+}
+
 // Define the the application environment
 const NODE_ENV = process.env.NODE_ENV?.toLowerCase() || "production";
 
