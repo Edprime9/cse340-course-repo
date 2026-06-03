@@ -33,6 +33,9 @@ import { testErrorPage } from "./controllers/errors.js";
 import {
   showUserRegistrationForm,
   processUserRegistrationForm,
+  showLoginForm,
+  processLoginForm,
+  processLogout,
 } from "./controllers/users.js";
 
 const router = express.Router();
@@ -67,5 +70,10 @@ router.get("/edit-project/:id", showEditProjectForm); // Edit project form
 router.post("/edit-project/:id", processEditProjectForm); // Process edit project form
 router.get("/register", showUserRegistrationForm);
 router.post("/register", processUserRegistrationForm);
+
+// User login routes
+router.get("/login", showLoginForm);
+router.post("/login", processLoginForm);
+router.get("/logout", processLogout);
 
 export default router;
