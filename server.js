@@ -8,10 +8,6 @@ import flash from "./src/middleware/flash.js";
 
 const SESSION_SECRET = process.env.SESSION_SECRET;
 
-if (!SESSION_SECRET) {
-  throw new Error("SESSION_SECRET environment variable is missing");
-}
-
 // Define the the application environment
 const NODE_ENV = process.env.NODE_ENV?.toLowerCase() || "production";
 
@@ -26,9 +22,9 @@ const app = express();
 // Set up session management
 app.use(
   session({
-    secret: SESSION_SECRET,
+    secret: process.env.SESSION_SECRET || "dev-secret",
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: { maxAge: 60 * 60 * 1000 }, // Session expires after 1 hour of inactivity
   }),
 );
@@ -68,6 +64,8 @@ app.use((req, res, next) => {
   if (req.session && req.session.user) {
     res.locals.isLoggedIn = true;
   }
+
+  res.locals.user = req.session.user || null;
 
   res.locals.NODE_ENV = NODE_ENV;
 

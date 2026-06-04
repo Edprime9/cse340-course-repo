@@ -38,6 +38,7 @@ import {
   processLogout,
   requireLogin,
   showDashboard,
+  requireRole,
 } from "./controllers/users.js";
 
 const router = express.Router();
@@ -49,12 +50,24 @@ router.get("/project/:id", showProjectDetailsPage);
 router.get("/categories", showCategoriesPage);
 router.get("/category/:id", showCategoryDetailsPage);
 router.get("/organization/:id", showOrganizationDetailsPage); // Route for organization details page
-router.get("/new-organization", showNewOrganizationForm); // Route for new organization page
+
+// router.get("/new-organization", showNewOrganizationForm);
+// router.post(
+//   "/new-organization",
+//   organizationValidation,
+//   processNewOrganizationForm,
+// );
+
+// Route for new organization page
+router.get("/new-organization", requireRole("admin"), showNewOrganizationForm);
+
+// Route to handle new organization form submission
 router.post(
   "/new-organization",
+  requireRole("admin"),
   organizationValidation,
   processNewOrganizationForm,
-); // Route to handle new organization form submission
+);
 router.get("/edit-organization/:id", showEditOrganizationForm); // Route to display the edit organization form
 router.post(
   "/edit-organization/:id",
