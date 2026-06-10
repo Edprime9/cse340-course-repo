@@ -19,7 +19,7 @@
 
     <% if (volunteeredProjects.length > 0) { %>
 
-    <ul>
+    <ul class="main-list">
       <% volunteeredProjects.forEach(project => { %>
 
         <li>
@@ -29,7 +29,7 @@
           <form
             action="/project/<%= project.project_id %>/unvolunteer"
             method="POST"
-            style="display:inline;"
+            style="display:inline;padding: 0;"
           >
             <button type="submit">
               Remove
