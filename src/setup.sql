@@ -192,3 +192,26 @@ ON u.role_id = r.role_id;
 
 DELETE FROM users
 WHERE email = 'test@example.com';
+
+-- ==========================================
+-- Create Project Volunteer Table
+-- ==========================================
+CREATE TABLE project_volunteers (
+    volunteer_id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    project_id INT NOT NULL,
+    volunteered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_user
+        FOREIGN KEY (user_id)
+        REFERENCES users(user_id)
+        ON DELETE CASCADE,
+
+    CONSTRAINT fk_project
+        FOREIGN KEY (project_id)
+        REFERENCES service_projects(project_id)
+        ON DELETE CASCADE,
+
+    CONSTRAINT unique_volunteer
+        UNIQUE (user_id, project_id)
+);

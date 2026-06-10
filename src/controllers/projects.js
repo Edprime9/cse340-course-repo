@@ -3,6 +3,9 @@ import {
   getProjectDetails,
   createProject,
   updateProject,
+  addVolunteer,
+  removeVolunteer,
+  isVolunteer,
 } from "../models/projects.js";
 
 import { getCategoriesByProjectId } from "../models/categories.js";
@@ -60,18 +63,21 @@ const showProjectDetailsPage = async (req, res) => {
 
   const project = await getProjectDetails(projectId);
 
-  // GET THE CATEGORIES
   const categories = await getCategoriesByProjectId(projectId);
+
+  let volunteerStatus = false;
+
+  if (req.session.user) {
+    volunteerStatus = await isVolunteer(req.session.user.user_id, projectId);
+  }
 
   const title = project.title;
 
-  console.log(categories);
-
-  // SEND categories TO EJS
   res.render("project", {
     title,
     project,
     categories,
+    volunteerStatus,
   });
 };
 
@@ -152,6 +158,38 @@ const processEditProjectForm = async (req, res) => {
   res.redirect(`/project/${projectId}`);
 };
 
+const volunteerForProject = async (req, res) => {
+  try {
+    const userId = req.session.user.user_id;
+    const projectId = req.params.id;
+
+    await addVolunteer(userId, projectId);
+
+    req.flash("success", "You are now volunteering.");
+
+    res.redirect(`/project/${projectId}`);
+  } catch (error) {
+    req.flash("error", error.message);
+    res.redirect("back");
+  }
+};
+
+const removeVolunteerFromProject = async (req, res) => {
+  try {
+    const userId = req.session.user.user_id;
+    const projectId = req.params.id;
+
+    await removeVolunteer(userId, projectId);
+
+    req.flash("success", "Volunteer signup removed.");
+
+    res.redirect(`/project/${projectId}`);
+  } catch (error) {
+    req.flash("error", error.message);
+    res.redirect("back");
+  }
+};
+
 export {
   showProjectsPage,
   showProjectDetailsPage,
@@ -160,4 +198,6 @@ export {
   projectValidation,
   showEditProjectForm,
   processEditProjectForm,
+  volunteerForProject,
+  removeVolunteerFromProject,
 };

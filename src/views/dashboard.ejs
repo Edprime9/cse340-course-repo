@@ -10,11 +10,42 @@
   <p>Username: <%= email %></p>
 
   <% if (user && user.role_name === 'admin') { %>
-  <p>
+  <p class="edit-link">
     <a href="/users">Manage Users</a>
   </p>
   <% } %>
   
+  <h2>My Volunteer Projects</h2>
+
+    <% if (volunteeredProjects.length > 0) { %>
+
+    <ul>
+      <% volunteeredProjects.forEach(project => { %>
+
+        <li>
+
+          <%= project.title %>
+
+          <form
+            action="/project/<%= project.project_id %>/unvolunteer"
+            method="POST"
+            style="display:inline;"
+          >
+            <button type="submit">
+              Remove
+            </button>
+          </form>
+
+        </li>
+
+      <% }) %>
+    </ul>
+
+    <% } else { %>
+
+    <p>You have not volunteered for any projects yet.</p>
+
+    <% } %>
 </main>
 
 <%- include('partials/footer') %>

@@ -96,6 +96,29 @@ main p {
   margin-bottom: 2rem;
   color: #444;
 }
+
+.edit-link a:link,
+.edit-link a:visited {
+  margin-top: 20px;
+  text-decoration: none;
+  background-color: #003366;
+  color: #ffffff;
+  padding: 0.9rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.edit-link a:hover,
+.edit-link a:active {
+  background-color: #00509e;
+  transform: translateY(-2px);
+}
+
 .main-list {
   list-style: none;
   margin-top: 1.5rem;
@@ -280,7 +303,5 @@ footer {
 
   main p {
     font-size: 1rem;
-  }
-  .main-list li {
   }
 }

@@ -19,6 +19,8 @@ import {
   projectValidation,
   showEditProjectForm,
   processEditProjectForm,
+  volunteerForProject,
+  removeVolunteerFromProject,
 } from "./controllers/projects.js";
 
 import {
@@ -36,10 +38,10 @@ import {
   showLoginForm,
   processLoginForm,
   processLogout,
-  requireLogin,
   showDashboard,
   requireRole,
   showUsersPage,
+  requireLogin,
 } from "./controllers/users.js";
 
 const router = express.Router();
@@ -96,5 +98,13 @@ router.get("/logout", processLogout);
 router.get("/dashboard", requireLogin, showDashboard);
 
 router.get("/users", requireRole("admin"), showUsersPage);
+
+router.post("/project/:id/volunteer", requireLogin, volunteerForProject);
+
+router.post(
+  "/project/:id/unvolunteer",
+  requireLogin,
+  removeVolunteerFromProject,
+);
 
 export default router;
